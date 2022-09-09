@@ -1,5 +1,7 @@
 .body1{
     background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .h11 , .p11{
     color: white;
