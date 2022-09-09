@@ -3,200 +3,183 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel=stylesheet href="style.css">
 	<title>
 		VysWeb
 	</title>
 	</head>
 	<header>
-<body style="background-color: black;"></body>
-<img src="logo.PNG" hspace="20px"width=150px height=100px>
-<img src="welcome.png" width=300px height=200px align="right">
+    <body class="body1">
+        <div class="div1">
+            <img src="logo.PNG" hspace="20px"width=150px height=100px>
+            <img src="welcome.png" width=150px height=100px align="right">
+        </div>
+        <h1 class="h11"><big>Study On B+ Tree</big></h1>
+        <p class="p11" style="font-size: 20px;">*In this website you will be learning about the B+ Trees, their updates,insertions and deletions clearly.*</p>
+        <br>
+        <br>
+        <div class="div2">
+            <p class="p1_d2"><b>B+ Tree</b></p>
+            <p style="font-size: 23px;">The <b style="color: greenyellow;">B+-tree index structure</b> is the most widely used of several index structures that maintain their efficiency despite insertion and deletion of data.B+-tree index takes the form of a <b style="color: greenyellow;">balanced tree</b> in which every path from the root of the tree to a leaf of the tree is of the same length. Each nonleaf node in the tree (other than the root) has between <b style="color: greenyellow;">⌈n∕2⌉ and n children</b>, where n is fixed for a particular tree; the root has between 2 and n children.<br><br>We shall see that the B+-tree structure imposes performance overhead on insertion and deletion and adds space overhead. The overhead is acceptable even for frequently modified files, since the cost of file reorganization is avoided.<br><br>This space overhead, too, is acceptable given the performance benefits of the B+-tree structure.</p>
+            <br>
+            <br>
+                <p style="font-size: 23px;">In this B+ Trees tutorial, you will be learning:
+                    <ul style="color: floralwhite; font-size: 20px;">
+                        <li><a href="#bts">Short Note on B+ Tree</a></li><br>
+                        <li><a href="#sbt">Structure of B+ Tree</a></li><br>
+                        <li><a href="#ubt">Updates on B+-Trees:</a></li><br>
+                        <li><a href="#bti">B+ Tree Insertion</a></li><br>
+                        <li><a href="#btd">B+ Tree Deletion</a></li><br>
+                    </ul>
+                </p>
+        </div>
+        <div id="bts" class="div3">
+            <p class="p1_d3">Short Note</p>
+            <ul style="color: whitesmoke; font-size: 23px;">
+            <li>The B+ tree is a <b style="color: greenyellow;">balanced binary search tree</b>. It follows a <b style="color: greenyellow;">multi-level index format</b>.</li>
+            <br>
+            <li>In the B+ tree, leaf nodes denote actual data pointers. B+ tree ensures that all leaf nodes remain at the <b style="color: greenyellow;">same height</b>.</li>
+            <br>
+            <li>In the B+ tree, the leaf nodes are linked using a <b>link list</b style="color: greenyellow;">. Therefore, a B+ tree can support random access as well as sequential access.</li>
+            </ul>
+            <br><big>
+            <h4 style="color: whitesmoke;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eg:</h4></big>
+            <center><img src="b+tree_eg.PNG" width=650px height=250px></center>
+            </p> 
+        </div>
+        <div id="sbt" class="div4">
+            <p class="p1_d4">Structure of B+ Tree:</p>
+            <p style="font-size: 23px;">
+            A B+-tree index is a multilevel index, but it has a structure that differs from that of the multilevel index-sequential file.<br><br>We assume for now that there are no duplicate search key values, that is, each search key is unique and occurs in at most one record; we consider the issue of nonunique search keys later.
+            </p>
+            <br><br>
+            <center><img src="structure1.PNG"></center>
+            <p style="font-size: 23px;">
+            Typical node of a B+-tree contains up to <b style="color: greenyellow;">n − 1 search-key</b>
+            values K1, K2, …, Kn−1, and <b style="color: greenyellow;">n pointers</b> P1, P2, …, Pn. The search-key values within a
+            node are kept in <b style="color: greenyellow;">sorted order</b>; thus, <b style="color: greenyellow;">if i < j, then Ki < Kj
+            </b>.
+            <br>
+            <br>
+            We consider first the structure of the leaf nodes. For i = 1, 2, …, n − 1, pointer Pi
+            points to a file record with search-key value Ki
+            . Pointer Pn has a special purpose
+            </p>
+            <p style="color:palevioletred ; font-size: 25px;">IN SHORT</p>
+            <ul style="color: whitesmoke; font-size: 23px;">
+                <li>In the B+ tree, every leaf node is at <b style="color: greenyellow;">equal distance</b> from the root node. The B+ tree is of the order n where n is fixed for every B+ tree.</li>
+                <br>
+                <li>It contains an <b style="color: greenyellow;">internal node and leaf node</b>.</li>
+            </ul>
+            <center>
+                <br><img src="b+-structure.png">
+            </center>
+            <br><big>
+            <p class="p2_d4"> &nbsp;&nbsp;&nbsp;&nbsp;Internal Node</p>
+            <ul style="color: whitesmoke; font-size: 23px;">
+                <li>An internal node of the B+ tree can contain <b style="color: greenyellow;">at least n/2 </b> record pointers except the root node.</li>
+                <br>
+                <li>At most, an internal node of the tree contains <b style="color: greenyellow;">n pointers</b>.</li>
+            </ul>
+            <p class="p3_d4"> &nbsp;&nbsp;&nbsp;&nbsp;Leaf Node</p>
+            <ul style="color: whitesmoke; font-size: 23px;">
+                <li>The leaf node of the B+ tree can contain at <b style="color: greenyellow;">least n/2record pointers</b> and <b style="color: greenyellow;">n/2 key values</b>.</li>
+                <br>
+                <li>At most, a leaf node contains <b style="color: greenyellow;">n record pointer</b> and <b style="color: greenyellow;">n key values</b>.</li>
+                <br>
+                <li>Every leaf node of the B+ tree contains <b style="color: greenyellow;">one block pointer</b> P to point to next leaf node.</li>
+            </ul>
+            </p>
 
-<h1 align="center" style="color:whitesmoke ;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<big>Study On B+ Tree</big> </h1>
-</header>
-<br><br>
-<h3><p align="center" style="color:antiquewhite ;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*In this website you will be learning about the B+ Trees, their updates,insertions and deletions clearly.*</p></h3>
-<br><br>
-<h1 style="color: red;"><big>B+ Tree</big></h1>
-<p style="color: whitesmoke;"><big>
-The <b style="color: greenyellow;">B+-tree index structure</b> is the most widely used of several index structures that
-maintain their efficiency despite insertion and deletion of data.B+-tree index takes
-the form of a <b style="color: greenyellow;">balanced tree</b> in which every path from the root of the tree to a leaf of
-the tree is of the same length. Each nonleaf node in the tree (other than the root)
-has between <b style="color: greenyellow;">⌈n∕2⌉ and n children</b>, where n is fixed for a particular tree; the root has
-between 2 and n children.<br><br>We shall see that the B+-tree structure imposes performance overhead on insertion
-and deletion and adds space overhead. The overhead is acceptable even for frequently
-modified files, since the cost of file reorganization is avoided.<br><br>This space overhead, too, is acceptable given the performance
-benefits of the B+-tree structure.
-</big>
-<br>
-<br>
-</p>
-<p style="color:whitesmoke ;">
-	<big>
-	&nbsp;In this B+ Trees tutorial, you will be learning:
-	<ul style="color: floralwhite;">
-		<h4>
-		<li><a href="#bts">Short Note on B+ Tree</a></li><br>
-		<li><a href="#sbt">Structure of B+ Tree</a></li><br>
-		<li><a href="#ubt">Updates on B+-Trees:</a></li><br>
-		<li><a href="#bti">B+ Tree Insertion</a></li><br>
-		<li><a href="#btd">B+ Tree Deletion</a></li><br>
-		</h4>
-	</ul>
-</big>
-<big>
-	<h1 id="bts" style="color:red ;"><big>Short Note</big></h1>
-<ul style="color: whitesmoke;">
-	<li>The B+ tree is a <b style="color: greenyellow;">balanced binary search tree</b>. It follows a <b style="color: greenyellow;">multi-level index format</b>.</li>
-	<li>In the B+ tree, leaf nodes denote actual data pointers. B+ tree ensures that all leaf nodes remain at the <b style="color: greenyellow;">same height</b>.</li>
-	<li>In the B+ tree, the leaf nodes are linked using a <b>link list</b style="color: greenyellow;">. Therefore, a B+ tree can support random access as well as sequential access.</li>
-</ul>
-</big>
-<br><big>
-<h4 style="color: whitesmoke;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eg:</h4></big>
-<center><img src="b+tree_eg.PNG" width=650px height=200px></center>
-</p> 
-<h1 id="sbt" style="color: red;"><big>Structure of B+ Tree:</big></h1>
-<p style="color: whitesmoke;"><big>
-A B+-tree index is a multilevel index, but it has a structure that differs from that of the
-multilevel index-sequential file.<br><br>We assume for now that there are no duplicate search
-key values, that is, each search key is unique and occurs in at most one record; we
-consider the issue of nonunique search keys later.</big>	
-<br><br>
-</p>
-<center><img src="structure1.PNG"></center>
-<p style="color: whitesmoke;"><big>
-Typical node of a B+-tree contains up to <b style="color: greenyellow;">n − 1 search-key</b>
-values K1, K2, …, Kn−1, and <b style="color: greenyellow;">n pointers</b> P1, P2, …, Pn. The search-key values within a
-node are kept in <b style="color: greenyellow;">sorted order</b>; thus, <b style="color: greenyellow;">if i < j, then Ki < Kj</big>
-</b>.
-<br>
-<br><big>
-We consider first the structure of the leaf nodes. For i = 1, 2, …, n − 1, pointer Pi
-points to a file record with search-key value Ki
-. Pointer Pn has a special purpose
-<h4 style="color:palevioletred ;"><big>IN SHORT</big></h4>
-<ul style="color: whitesmoke;">
-	<li>In the B+ tree, every leaf node is at <b style="color: greenyellow;">equal distance</b> from the root node. The B+ tree is of the order n where n is fixed for every B+ tree.</li>
-	<li>It contains an <b style="color: greenyellow;">internal node and leaf node</b>.</li>
-</ul></big>
-<center>
-	<br><img src="b+-structure.png">
-</center>
-<br><big>
-<h3 style="color: red;"> &nbsp;&nbsp;&nbsp;&nbsp; <big>Internal Node</big></h3>
-<ul style="color: whitesmoke;">
-	<li>An internal node of the B+ tree can contain <b style="color: greenyellow;">at least n/2 </b> record pointers except the root node.</li>
-	<li>At most, an internal node of the tree contains <b style="color: greenyellow;">n pointers</b>.</li>
-</ul>
-<h3 style="color: red;"> &nbsp;&nbsp;&nbsp;&nbsp;<big> Leaf Node</big></h3>
-<ul style="color: whitesmoke;">
-	<li>The leaf node of the B+ tree can contain at <b style="color: greenyellow;">least n/2record pointers</b> and <b style="color: greenyellow;">n/2 key values</b>.</li>
-	<li>At most, a leaf node contains <b style="color: greenyellow;">n record pointer</b> and <b style="color: greenyellow;">n key values</b>.</li>
-	<li>Every leaf node of the B+ tree contains <b style="color: greenyellow;">one block pointer</b> P to point to next leaf node.</li>
-</ul>
-</big>
-</p>
-
-<h1 id="ubt" style="color: red;"><big>Updates on B+-Trees</big></h1>
-<p style="color: whitesmoke;"><big>
-When a record is inserted into, or deleted from a relation, indices on the relation must
-be updated correspondingly. Recall that updates to a record can be modeled as a deletion of the old record followed by insertion of the updated record. Hence we only
-consider the case of insertion and deletion.
-<br>
-Insertion and deletion are more complicated than lookup, since it may be necessary to <b style="color: greenyellow;">split</b> a node that becomes too large as the result of an insertion, or to coalesce
-nodes (i.e., combine nodes) if a node becomes too small (fewer than ⌈n∕2⌉ pointers).
-<br>
-Furthermore, when a node is split or a pair of nodes is combined, we must ensure that
-<b style="color: greenyellow;">balance is preserved</b>. To introduce the idea behind insertion and deletion in a B+-tree,
-we shall assume temporarily that nodes never become too large or too small. Under
-this assumption, insertion and deletion are performed as defined next.
-<br>
-<br>
-</big>
-<ul style="color: whitesmoke;"><big>
-	<li><b style="color: red;">Insertion</b>: Using the technique as for lookup from the find() function, we first find the leaf node in which the search-key value would appear. We
-then insert an entry (i.e., a search-key value and record pointer pair) in the leaf
-node, positioning it such that the search keys are still in order.</li><br>
-	<li><b style="color: red;">Deletion</b>: Using the same technique as for lookup, we find the leaf node containing
-the entry to be deleted by performing a lookup on the search-key value of the
-deleted record; if there are multiple entries with the same search-key value, we
-search across all entries with the same search-key value until we find the entry that
-points to the record being deleted. We then remove the entry from the leaf node.
-All entries in the leaf node that are to the right of the deleted entry are shifted left
-by one position, so that there are no gaps in the entries after the entry is deleted.</li></big>
-</ul>
-</p>
-<br>
-<h1 id="bti" style="color: red;"><big>B+ Tree Insertion</big></h1>
-<p style="color: whitesmoke;">
-<br><big>
-Consider a B+ Tree as shown below,
-<br>
-</p>
-<center>
-	<img src="search1.png">
-</center>
-<br>
-<p style="color: whitesmoke;">
-Suppose we want to insert a record <b style="color: greenyellow;">60</b> in the above structure. It will go to the <b style="color: greenyellow;">3rd leaf node after 55</b>. It is a balanced tree, and a leaf node of this tree is already full, so we cannot insert 60 there.
-<br>
-<br>
-In this case, we have to split the leaf node, so that it can be inserted into tree without affecting the fill factor, balance and order.
-</p>
-<br>
-<center>
-	<img src="insert1.png">
-</center>
-<br>
-<p style="color: whitesmoke;">
-The 3rd leaf node has the values <b style="color: greenyellow;">(50, 55, 60, 65, 70)</b> and its current root node is <b style="color: greenyellow;">50</b>. We will split the leaf node of the tree in the middle so that its balance is not altered. So we can group <b style="color: greenyellow;">(50, 55)</b> and <b style="color: greenyellow;">(60, 65, 70)</b> into 2 leaf nodes.
-<br>
-<br>
-If these two has to be leaf nodes, the intermediate node cannot branch from 50. It should have 60 added to it, and then we can have pointers to a new leaf node.
-</p>
-<br>
-<center>
-	<img src="insert2.png">
-</center>
-<br>
-<p style="color: whitesmoke;">
-This is how we can insert an entry when there is overflow. In a normal scenario, it is very easy to find the node where it fits and then place it in that leaf node.
-</p>
-<br>
-<h1 id="btd" style="color: red;"><big>B+ Tree Deletion</big></h1>
-<p style="color: whitesmoke;">
-<br>
-Consider a B+ Tree as shown below,
-<br>
-<center>
-	<img src="insert2.png">
-</center>
-<br>
-<p style="color: whitesmoke;">
-Suppose we want to delete <b style="color: greenyellow;">60</b> from the above example. In this case, we have to remove 60 from the intermediate node as well as from the <b style="color: greenyellow;">4th</b> leaf node too. <br><br>If we remove it from the intermediate node, then the tree will not satisfy the rule of the B+ tree. So we need to modify it to have a balanced tree.
-<br>
-<br>
-After deleting node 60 from above B+ tree and <b style="color: greenyellow;">re-arranging</b> the nodes, it will show as follows:
-</big>
-</p>
-<br>
-<center><img src="delete1.png"></center>
-<br>
-</p>
-<h1 style="color: red;"><big>Some Additional Topics:</h1>
-<p>
-	<ul style="color: whitesmoke;">
-		<h4>
-		<li><a href="https://www.guru99.com/hashing-in-dbms.html">Hashing in DBMS</a></li><br>
-		<li><a href="https://www.guru99.com/indexing-in-database.html">Indexing in DBMS</a></li><br>
-		<li><a href="https://www.javatpoint.com/dbms-file-organization#:~:text=File%20organization%20is%20a%20logical,placed%20on%20the%20storage%20medium.">File organisation in DBMS</a></li><br>
-		<li><a href="https://www.javatpoint.com/dbms-raid">RAID levels in DBMS</a></li><br>
-		</h4>
-	</ul>
-
-</p>
-</big>
-</body>
-</html>
+        </div>
+        <div id="ubt" class="div5">
+            <p class="p1_d5">Updates on B+-Trees</p>
+            <p style="color: whitesmoke; font-size: 23px;">
+            When a record is inserted into, or deleted from a relation, indices on the relation must be updated correspondingly. Recall that updates to a record can be modeled as a deletion of the old record followed by insertion of the updated record. Hence we only consider the case of insertion and deletion.
+            <br>
+            <br>
+            Insertion and deletion are more complicated than lookup, since it may be necessary to <b style="color: greenyellow;">split</b> a node that becomes too large as the result of an insertion, or to coalesce nodes (i.e., combine nodes) if a node becomes too small (fewer than ⌈n∕2⌉ pointers).
+            <br>
+            <br>
+            Furthermore, when a node is split or a pair of nodes is combined, we must ensure that
+            <b style="color: greenyellow;">balance is preserved</b>. To introduce the idea behind insertion and deletion in a B+-tree, we shall assume temporarily that nodes never become too large or too small. Under this assumption, insertion and deletion are performed as defined next.
+            <br>
+            <br>
+            <ul style="color: whitesmoke; font-size: 23px;">
+                <li><b style="color: red;">Insertion</b>: Using the technique as for lookup from the find() function, we first find the leaf node in which the search-key value would appear. We then insert an entry (i.e., a search-key value and record pointer pair) in the leaf node, positioning it such that the search keys are still in order.</li><br>
+                <br>
+                <li><b style="color: red;">Deletion</b>: Using the same technique as for lookup, we find the leaf node containing the entry to be deleted by performing a lookup on the search-key value of the deleted record; if there are multiple entries with the same search-key value, we search across all entries with the same search-key value until we find the entry that  points to the record being deleted. We then remove the entry from the leaf node. All entries in the leaf node that are to the right of the deleted entry are shifted left by one position, so that there are no gaps in the entries after the entry is deleted.</li>
+            </ul>
+            </p>
+            <br>
+        </div>
+        <div id="bti" class="div6">
+            <p class="p1_d6">B+ Tree Insertion</p>
+            <p style="color: whitesmoke; font-size: 23px;">
+            <br>
+            Consider a B+ Tree as shown below,
+            <br>
+            </p>
+            <center>
+                <img src="search1.png">
+            </center>
+            <br>
+            <p style="color: whitesmoke; font-size: 23px;">
+            Suppose we want to insert a record <b style="color: greenyellow;">60</b> in the above structure. It will go to the <b style="color: greenyellow;">3rd leaf node after 55</b>. It is a balanced tree, and a leaf node of this tree is already full, so we cannot insert 60 there.
+            <br>
+            <br>
+            In this case, we have to split the leaf node, so that it can be inserted into tree without affecting the fill factor, balance and order.
+            </p>
+            <br>
+            <center>
+                <img src="insert1.png">
+            </center>
+            <br>
+            <p style="color: whitesmoke;font-size: 23px;">
+            The 3rd leaf node has the values <b style="color: greenyellow;">(50, 55, 60, 65, 70)</b> and its current root node is <b style="color: greenyellow;">50</b>. We will split the leaf node of the tree in the middle so that its balance is not altered. So we can group <b style="color: greenyellow;">(50, 55)</b> and <b style="color: greenyellow;">(60, 65, 70)</b> into 2 leaf nodes.
+            <br>
+            <br>
+            If these two has to be leaf nodes, the intermediate node cannot branch from 50. It should have 60 added to it, and then we can have pointers to a new leaf node.
+            </p>
+            <br>
+            <center>
+                <img src="insert2.png">
+            </center>
+            <br>
+            <p style="color: whitesmoke;font-size: 23px;">
+            This is how we can insert an entry when there is overflow. In a normal scenario, it is very easy to find the node where it fits and then place it in that leaf node.
+            </p>
+            <br>
+        </div>
+        <div id="btd" class="div7">
+            <p class="p1_d7">B+ Tree Deletion</p>
+            <p style="color: whitesmoke;font-size: 23px;">
+            <br>
+            Consider a B+ Tree as shown below,
+            <br>
+            <center>
+                <img src="insert2.png">
+            </center>
+            <br>
+            <p style="color: whitesmoke;font-size: 23px;">
+            Suppose we want to delete <b style="color: greenyellow;">60</b> from the above example. In this case, we have to remove 60 from the intermediate node as well as from the <b style="color: greenyellow;">4th</b> leaf node too. <br><br>If we remove it from the intermediate node, then the tree will not satisfy the rule of the B+ tree. So we need to modify it to have a balanced tree.
+            <br>
+            <br>
+            After deleting node 60 from above B+ tree and <b style="color: greenyellow;">re-arranging</b> the nodes, it will show as follows:
+            </p>
+            <br>
+            <center><img src="delete1.png"></center>
+        </div>
+        <div class="div8">
+            <p class="p1_d8">Some Additional Topics:</p>
+                <p style="font-size: 25px;">
+                    <ul style="color: whitesmoke;font-size: 25px;">
+                        <li><a href="https://www.guru99.com/hashing-in-dbms.html">Hashing in DBMS</a></li><br>
+                        <li><a href="https://www.guru99.com/indexing-in-database.html">Indexing in DBMS</a></li><br>
+                        <li><a href="https://www.javatpoint.com/dbms-file-organization#:~:text=File%20organization%20is%20a%20logical,placed%20on%20the%20storage%20medium.">File organisation in DBMS</a></li><br>
+                        <li><a href="https://www.javatpoint.com/dbms-raid">RAID levels in DBMS</a></li><br>
+                    </ul>
+                 </p>
+        </div>
+    </body>
+</head>
