@@ -1,0 +1,28 @@
+.body1{
+    background-color: black;
+}
+.h11 , .p11{
+    color: white;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.div2 , .div3 , .div4 , .div5 , .div6 , .div7 , .div8{
+    color: white;
+    margin-left: 30px;
+}
+.p1_d2 , .p1_d3 , .p1_d4 , .p1_d5 , .p1_d6 , .p1_d7 , .p1_d8{
+    color: red;
+    font-size: 35px;
+}
+.p2_d4 , .p3_d4 {
+    color: palevioletred;
+    font-size: 25px;
+}
+a{
+    color: blue;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px;
+}
